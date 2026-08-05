@@ -26,7 +26,9 @@ export default function App() {
     fetchUserProfile();
   }, []);
   async function fetchUserProfile() {
-    const { data: profiles } = await client.models.UserProfile.list();
+    const { data: profiles, errors } = await client.models.UserProfile.list();
+    console.log("Fetched profiles:", profiles);
+    console.log("Errors if any:", errors);
     setUserProfiles(profiles);
   }
   return (
